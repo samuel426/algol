@@ -1,0 +1,60 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+        int R = Integer.parseInt(st.nextToken());
+
+        int[][] a = new int[N][M];
+        for (int i = 0; i < N; i++) {
+            st = new StringTokenizer(br.readLine());
+            for (int j = 0; j < M; j++) a[i][j] = Integer.parseInt(st.nextToken());
+        }
+
+        int layers = Math.min(N, M) / 2;
+
+        for (int layer = 0; layer < layers; layer++) {
+            int top = layer, left = layer;
+            int bottom = N - 1 - layer, right = M - 1 - layer;
+
+            int height = bottom - top + 1;
+            int width = right - left + 1;
+            int len = 2 * (height + width) - 4;
+
+            int k = R % len;
+            if (k == 0) continue;
+
+            int[] ring = new int[len];
+            int idx = 0;
+
+            for (int j = left; j <= right; j++) ring[idx++] = a[top][j];
+            for (int i = top + 1; i <= bottom - 1; i++) ring[idx++] = a[i][right];
+            for (int j = right; j >= left; j--) ring[idx++] = a[bottom][j];
+            for (int i = bottom - 1; i >= top + 1; i--) ring[idx++] = a[i][left];
+
+            int[] rotated = new int[len];
+            for (int i = 0; i < len; i++) rotated[i] = ring[(i + k) % len];
+
+            idx = 0;
+            for (int j = left; j <= right; j++) a[top][j] = rotated[idx++];
+            for (int i = top + 1; i <= bottom - 1; i++) a[i][right] = rotated[idx++];
+            for (int j = right; j >= left; j--) a[bottom][j] = rotated[idx++];
+            for (int i = bottom - 1; i >= top + 1; i--) a[i][left] = rotated[idx++];
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                if (j > 0) sb.append(' ');
+                sb.append(a[i][j]);
+            }
+            sb.append('\n');
+        }
+        System.out.print(sb);
+    }
+}
