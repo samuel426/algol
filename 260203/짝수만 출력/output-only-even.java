@@ -10,7 +10,7 @@ public class Main {
         int a = Integer.parseInt(arr[0]);
         int b = Integer.parseInt(arr[1]);
 
-        while(a != b) {
+        while(a <= b) {
             
             if(a % 2 == 0) {
                 System.out.print(a + " ");
