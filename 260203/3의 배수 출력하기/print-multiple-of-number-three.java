@@ -5,7 +5,7 @@ public class Main {
         // Please write your code here.
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int N = Integer.parseInt(br.readLine()) + 1;
+        int N = Integer.parseInt(br.readLine());
 
         int start = 3;
         while(start <= N) {
