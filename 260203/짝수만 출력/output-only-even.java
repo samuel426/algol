@@ -8,7 +8,7 @@ public class Main {
         String[] arr = br.readLine().split(" ");
 
         int a = Integer.parseInt(arr[0]);
-        int b = Integer.parseInt(arr[0]);
+        int b = Integer.parseInt(arr[1]);
 
         while(a != b) {
             
