@@ -9,7 +9,7 @@ public class Main {
 
         int start = 1;
         while(start <= N) {
-            System.out.print(start + " ");
+            System.out.print(N + " ");
             N -= 1;
         }
 
