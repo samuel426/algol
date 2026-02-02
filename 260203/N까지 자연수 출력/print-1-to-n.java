@@ -1,0 +1,17 @@
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        // Please write your code here.
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int N = Integer.parseInt(br.readLine()) + 1;
+
+        int start = 1;
+        while(start != N) {
+            System.out.print(start + " ");
+            start++;
+        }
+
+    }
+}
