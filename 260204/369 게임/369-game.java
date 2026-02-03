@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -10,11 +9,15 @@ public class Main {
 
         for(int i = 1; i <= a; i++) {
             String num = Integer.toString(i);
-            if(num.contains("3") || num.contains("6") || num.contains("9")) {
+
+            //이거 왜 이러는데
+
+            if(num.contains("3") || num.contains("6") || num.contains("9") || i % 3 == 0) {
                 System.out.print("0 ");
                 continue;
             }
             System.out.print(i + " ");
+
         }
 
     }
