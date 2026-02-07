@@ -69,11 +69,9 @@ public class Main {
                 String key = encodeState(marbles);
                 if (!seen.add(key)) break;
 
-                // 한 턴 이동(동시 이동이라 next로 받음)
                 int[] dr = {0, 0, -1, 1};
                 int[] dc = {-1, 1, 0, 0};
 
-                // 다음 위치/방향 임시 저장
                 int[][] nextRCd = new int[marbles.size()][3];
 
                 for (int i = 0; i < marbles.size(); i++) {
@@ -82,14 +80,18 @@ public class Main {
 
                     int r = m.r, c = m.c, d = m.d;
 
-                    // 벽에 부딪히면 반전
-                    if (d == 0 && c == 0) d = 1;          // L at left wall -> R
-                    else if (d == 1 && c == N - 1) d = 0; // R at right wall -> L
-                    else if (d == 2 && r == 0) d = 3;     // U at top -> D
-                    else if (d == 3 && r == N - 1) d = 2; // D at bottom -> U
+                    boolean bounced = false; // 이번 턴에 벽에 닿아서 "이동 안 함" 여부
 
-                    r += dr[d];
-                    c += dc[d];
+                    if (d == 0 && c == 0) { d = 1; bounced = true; }          // L at left wall -> R
+                    else if (d == 1 && c == N - 1) { d = 0; bounced = true; } // R at right wall -> L
+                    else if (d == 2 && r == 0) { d = 3; bounced = true; }     // U at top -> D
+                    else if (d == 3 && r == N - 1) { d = 2; bounced = true; } // D at bottom -> U
+
+                    // B안: 벽에서 반전한 턴에는 이동하지 않음
+                    if (!bounced) {
+                        r += dr[d];
+                        c += dc[d];
+                    }
 
                     nextRCd[i][0] = r;
                     nextRCd[i][1] = c;
