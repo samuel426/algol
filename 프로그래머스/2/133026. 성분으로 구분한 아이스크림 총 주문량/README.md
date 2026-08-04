@@ -1,6 +1,6 @@
 # [level 2] 성분으로 구분한 아이스크림 총 주문량 - 133026 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/133026) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/133026?utm_source=chatgpt.com) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2026년 04월 24일 13:33:20
+2026년 08월 04일 11:20:25
 
 ### 문제 설명
 
